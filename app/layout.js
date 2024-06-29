@@ -1,4 +1,4 @@
-//layout.js
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -8,8 +8,8 @@ import SessionWrapper from "@/components/SessionWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "FundRiseNow - Fund your projects now!!!",
-  description: "A crowfunding platform for creators",
+  title: "PassOP - Securely Manage Your Passwords!",
+  description: "Your Trusted Password Management Solution.",
 };
 
 export default function RootLayout({ children }) {

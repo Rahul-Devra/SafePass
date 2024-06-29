@@ -10,7 +10,7 @@ import {
 import { deletePassword } from "@/app/serverActions/actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Link from "next/link";
+
 
 const PasswordPage = ({ userName }) => {
   const { data: session } = useSession();
@@ -26,8 +26,8 @@ const PasswordPage = ({ userName }) => {
   }, [session, router]);
 
   useEffect(() => {
-    getData(); // Fetch user data when component mounts
-  }, []);
+    getData();
+  }, [session, router]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -35,19 +35,21 @@ const PasswordPage = ({ userName }) => {
 
   const getData = async () => {
     try {
-      let dbPasswords = await fetchpassword(session.user.username);
+      let dbPasswords = await fetchpassword(userName, session.user.provider);
       setPasswordArray(dbPasswords);
     } catch (error) {
       console.error("Error fetching passwords:", error);
-      // Handle error state or return an error message to the user
     }
   };
 
   const handleSubmit = async () => {
     try {
+      console.log(session.user.provider)
+      console.log(session.user.username)
       const response = await submitForm({
         ...form,
-        userData: session.user.username,
+        userData: userName,
+        provider: session.user.provider,
       });
       if (response) {
         toast("Password Saved successfully!", {
@@ -72,9 +74,8 @@ const PasswordPage = ({ userName }) => {
 
   const handleEdit = async (id) => {
     try {
-      const response = await editPassword(form, id); // Await the editPassword call
+      const response = await editPassword(form, id);
       if (response) {
-        // Handle success case
         toast("Password Edited successfully!", {
           position: "top-right",
           autoClose: 5000,
@@ -87,7 +88,6 @@ const PasswordPage = ({ userName }) => {
         });
         return true;
       } else {
-        // Handle failure case
         toast.error("Error in Editing password", {
           position: "top-right",
           autoClose: 5000,
@@ -108,9 +108,8 @@ const PasswordPage = ({ userName }) => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await deletePassword(id); // Await the editPassword call
+      const response = await deletePassword(id);
       if (response) {
-        // Handle success case
         toast("Password deleted successfully!", {
           position: "top-right",
           autoClose: 5000,
@@ -123,7 +122,6 @@ const PasswordPage = ({ userName }) => {
         });
         return true;
       } else {
-        // Handle failure case
         toast.error("Delete password failed:", {
           position: "top-right",
           autoClose: 5000,
@@ -145,19 +143,17 @@ const PasswordPage = ({ userName }) => {
 
   const savePassword = async () => {
     if (
-      form.site.length >= 5 &&
-      form.username.length >= 5 &&
-      form.password.length >= 5
+      form.site.length > 4 &&
+      form.username.length > 4 &&
+      form.password.length > 4
     ) {
       if (editIndex !== null) {
         const editedPasswordArray = passwordArray.map((item, index) =>
-          index === editIndex
-            ? { ...form, userData: session.user.username }
-            : item
+          index === editIndex ? { ...form, userData: userName } : item
         );
         setPasswordArray(editedPasswordArray);
-
-        await handleEdit(editedPasswordArray[editIndex]._id);
+        const id = editedPasswordArray[editIndex]._id;
+        await handleEdit(id);
 
         setEditIndex(null);
       } else {
@@ -165,7 +161,7 @@ const PasswordPage = ({ userName }) => {
         const updatedPasswordArray = [...passwordArray, form];
         setPasswordArray(updatedPasswordArray);
       }
-      setForm({ site: "", username: "", password: "" }); // Reset form fields after save
+      setForm({ site: "", username: "", password: "" });
     } else {
       toast.error(
         <div>
@@ -188,8 +184,8 @@ const PasswordPage = ({ userName }) => {
   };
 
   const editPasswordItem = (index) => {
-    setForm({ ...passwordArray[index] }); // Update form state with selected password data
-    setEditIndex(index); // Set the edit index for tracking which item is being edited
+    setForm({ ...passwordArray[index] });
+    setEditIndex(index);
   };
 
   const deletePasswordItem = async (itemIndex) => {
@@ -226,10 +222,9 @@ const PasswordPage = ({ userName }) => {
           <source src="/bg.mp4" type="video/mp4" />
         </video>
         <div className="container m-auto px-4 pb-28 sm:px-6 lg:px-8">
-          {" "}
-          {/* Responsive padding added */}
           <div>
             <h1 className="text-4xl font-bold text-center text-white">
+              
               <span className="text-green-700">&lt;</span>
               <span>Pass</span>
               <span className="text-green-700">OP/&gt;</span>
@@ -248,7 +243,6 @@ const PasswordPage = ({ userName }) => {
               onChange={handleChange}
             />
             <div className="flex flex-col gap-5 mt-5 md:flex-row md:gap-10">
-              {/* Added responsive classes for input fields */}
               <input
                 className="w-full md:w-[80%] rounded-full px-3 border border-violet-800 h-10 bg-gray-800 text-white"
                 type="text"
@@ -273,7 +267,7 @@ const PasswordPage = ({ userName }) => {
                 onClick={savePassword}
               >
                 <lord-icon
-                  src="https://cdn.lordicon.com/jgnvfzqg.json"
+                  src="https:cdn.lordicon.com/jgnvfzqg.json"
                   trigger="hover"
                 ></lord-icon>
                 Save

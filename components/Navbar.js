@@ -1,5 +1,4 @@
-//navbar.js component
-/* eslint-disable @next/next/no-img-element */
+
 "use client";
 import { useSession, signOut } from "next-auth/react";
 import { MdHome } from "react-icons/md";
@@ -28,7 +27,7 @@ const Navbar = () => {
         </span>
       </Link>
       <ul className="flex justify-between gap-4">
-        <div className=" pt-2 relative flex flex-col gap-4 md:block ">
+        <div className=" pt-2 relative flex gap-4 md:block ">
           {session && (
             <>
               <button

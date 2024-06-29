@@ -1,6 +1,4 @@
-// pages/about.js
-
-import Head from "next/head";
+import React from "react";
 
 const About = () => {
   return (
@@ -19,7 +17,7 @@ const About = () => {
         <section className="mb-8">
           <p className="mb-4">
             Welcome to PassOp, a platform dedicated to offering innovative
-            solutions for password management. Whether you're an individual,{" "}
+            solutions for password management. Whether you're an individual,
             <br /> a small business owner, or part of a large organization,
             PassOp provides the tools you need to keep your accounts safe and
             secure.
@@ -67,8 +65,12 @@ const About = () => {
                 </ul>
               </li>
             </ol>
-            <div className="h-[200px]">
-            <video autoPlay muted loop controls className="w-[450px] h-[450px] pb-56 md:pb-60 mr-14">
+            <div className="w-full md:w-auto h-[200px] md:h-[225px] border-4 border-blue-900 mr-20 md:py-1 " style={{ 
+              borderImage:
+                "linear-gradient(to right bottom, rgb(79, 70, 229) 0%, rgb(165, 56, 164) 50%, rgb(220, 38, 38) 100%)",
+              borderImageSlice: 1, 
+            }}>
+            <video autoPlay muted loop controls className="w-full h-[450px] px-1 pb-64 md:pb-60">
               <source src="/Video.mp4" type="video/mp4" />
             </video>
             </div>
@@ -117,17 +119,17 @@ const About = () => {
           <h2 className="text-2xl font-bold mb-4 text-blue-400">Contact Us</h2>
           <p>
             Have questions or need assistance? Our support team is here to help!
-            Contact us at{" "}
+            Contact us at
             <a
               href="mailto:support@passop.com"
               className="text-blue-600 underline"
             >
               support@passop.com
-            </a>{" "}
-            or visit our{" "}
+            </a>
+            or visit our
             <a href="#" className="text-blue-600 underline">
               Help Center
-            </a>{" "}
+            </a>
             for more information.
           </p>
           <p>

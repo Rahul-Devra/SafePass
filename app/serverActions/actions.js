@@ -3,12 +3,17 @@ import User from "../models/User";
 import Password from "../models/Password";
 import connectDB from "../db/connectDB";
 
-const crypto = require('crypto');
+
+const crypto = require("crypto");
 
 const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
 
-const algorithm = 'aes-256-cbc';
-const key = crypto.createHash('sha256').update(String(ENCRYPTION_KEY)).digest('base64').substr(0, 32);
+const algorithm = "aes-256-cbc";
+const key = crypto
+  .createHash("sha256")
+  .update(String(ENCRYPTION_KEY))
+  .digest("base64")
+  .substr(0, 32);
 
 const encrypt = (text) => {
   const iv = crypto.randomBytes(16);
@@ -22,7 +27,11 @@ const encrypt = (text) => {
 };
 
 const decrypt = (encryptedData, iv) => {
-  const decipher = crypto.createDecipheriv(algorithm, key, Buffer.from(iv, "hex"));
+  const decipher = crypto.createDecipheriv(
+    algorithm,
+    key,
+    Buffer.from(iv, "hex")
+  );
   let decrypted = decipher.update(encryptedData, "hex", "utf8");
   decrypted += decipher.final("utf8");
   return decrypted;
@@ -45,7 +54,7 @@ export const findUser = async ({ username }) => {
 export const submitForm = async (data) => {
   try {
     await connectDB();
-    const { site, username, password, userData } = data;
+    const { site, username, password, userData , provider  } = data;
 
     const encryptedSite = encrypt(site);
     const encryptedUsername = encrypt(username);
@@ -56,6 +65,7 @@ export const submitForm = async (data) => {
       username: JSON.stringify(encryptedUsername),
       password: JSON.stringify(encryptedPassword),
       userData,
+      provider
     });
 
     return { status: "OK", message: "Database Created" };
@@ -65,10 +75,13 @@ export const submitForm = async (data) => {
   }
 };
 
-export const fetchpassword = async (userName) => {
+export const fetchpassword = async (userName,provider) => {
   try {
     await connectDB();
-    let passwords = await Password.find({ userData: userName });
+    let passwords = await Password.find({
+      userData: userName,
+      provider: provider,
+    });
 
     let decryptedPasswords = passwords.map((data) => {
       const site = JSON.parse(data.site);
@@ -79,6 +92,7 @@ export const fetchpassword = async (userName) => {
         site: decrypt(site.encryptedData, site.iv),
         username: decrypt(username.encryptedData, username.iv),
         password: decrypt(password.encryptedData, password.iv),
+        _id: data._id
       };
     });
 
@@ -93,21 +107,23 @@ export const editPassword = async (data, id) => {
   try {
     await connectDB();
     const { site, username, password } = data;
-    const encryptedSite = encrypt(site);
-    const encryptedUsername = encrypt(username);
-    const encryptedPassword = encrypt(password);
+
+    // Encrypt updated data
+    const updatedEncryptedSite = encrypt(site);
+    const updatedEncryptedUsername = encrypt(username);
+    const updatedEncryptedPassword = encrypt(password);
+
+    // Update the password document with new encrypted data
     const updatedDocument = await Password.findByIdAndUpdate(
       id,
-      
       {
-        site: JSON.stringify(encryptedSite),
-        username: JSON.stringify(encryptedUsername),
-        password: JSON.stringify(encryptedPassword),
-        userData,
+        site: JSON.stringify(updatedEncryptedSite),
+        username: JSON.stringify(updatedEncryptedUsername),
+        password: JSON.stringify(updatedEncryptedPassword),
       },
-
       { new: true }
     );
+
     return { status: "OK", data: updatedDocument };
   } catch (error) {
     console.error("Error updating password:", error);

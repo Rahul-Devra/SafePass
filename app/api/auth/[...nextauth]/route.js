@@ -1,4 +1,3 @@
-//this is my route.js
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -6,7 +5,6 @@ import User from "@/app/models/user";
 import connectDB from "@/app/db/connectDB";
 
 export const authOptions = {
-  // Configure one or more authentication providers
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -16,27 +14,46 @@ export const authOptions = {
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
-    // ...add more providers here
   ],
   callbacks: {
     async signIn({ user, account, email }) {
-      if (account.provider === "github" || account.provider === "google") {
+      if (account.provider === "google" || account.provider === "github") {
         await connectDB();
-        const currentUser = await User.findOne({ email: email });
+        const currentUser = await User.findOne({
+          email: user.email,
+          provider: account.provider,
+        });
         if (!currentUser) {
-          const newUser = await User.create({
+          await User.create({
             email: user.email,
-            username: user.email.split("@")[0]
+            username: user.email.split("@")[0],
+            provider: account.provider,
           });
         }
-        return true;
       }
+      return true;
     },
-    async session({ session, user }) {
+    async jwt({ token, account, user }) {
+      if (account) {
+        token.accessToken = account.access_token;
+        token.provider = account.provider; // Store provider information in token
+        if (user) {
+          token.id = user.id;
+        }
+      }
+      return token;
+    },
+    async session({  session, token }) {
       const dbUser = await User.findOne({ email: session.user.email });
-        session.user.username = dbUser.username;
-        
-      
+      session.user.username = dbUser.username;
+
+      session.user.id = token.id;
+      session.user.accessToken = token.accessToken;
+      session.user.provider = token.provider;
+
+      console.log("Session Username:", token.username);
+      console.log("Session Information:", session);
+      console.log("Provider Information:", token.provider);
       return session;
     },
   },

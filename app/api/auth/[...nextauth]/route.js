@@ -7,12 +7,12 @@ import connectDB from "@/app/db/connectDB";
 export const authOptions = {
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: process.env.APP_GITHUB_ID,
+      clientSecret: process.env.APP_GITHUB_SECRET,
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: process.env.APP_GOOGLE_ID,
+      clientSecret: process.env.APP_GOOGLE_SECRET,
     }),
   ],
   callbacks: {
@@ -36,7 +36,7 @@ export const authOptions = {
     async jwt({ token, account, user }) {
       if (account) {
         token.accessToken = account.access_token;
-        token.provider = account.provider; // Store provider information in token
+        token.provider = account.provider;
         if (user) {
           token.id = user.id;
         }

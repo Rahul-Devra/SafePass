@@ -108,12 +108,12 @@ export const editPassword = async (data, id) => {
     await connectDB();
     const { site, username, password } = data;
 
-    // Encrypt updated data
+    
     const updatedEncryptedSite = encrypt(site);
     const updatedEncryptedUsername = encrypt(username);
     const updatedEncryptedPassword = encrypt(password);
 
-    // Update the password document with new encrypted data
+    
     const updatedDocument = await Password.findByIdAndUpdate(
       id,
       {

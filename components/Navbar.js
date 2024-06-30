@@ -110,7 +110,7 @@ const Navbar = () => {
               Logout
             </button>
           )}
-          {/* 1st Step: Create to login */}
+          
           {!session && (
             <Link href={"/login"}>
               <button

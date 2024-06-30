@@ -43,7 +43,7 @@ export const authOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({  session, token }) {
       const dbUser = await User.findOne({ email: session.user.email });
       session.user.username = dbUser.username;
 
@@ -51,7 +51,7 @@ export const authOptions = {
       session.user.accessToken = token.accessToken;
       session.user.provider = token.provider;
 
-      console.log("Session Username:", session.user.username);
+      console.log("Session Username:", token.username);
       console.log("Session Information:", session);
       console.log("Provider Information:", token.provider);
       return session;
@@ -60,13 +60,4 @@ export const authOptions = {
 };
 
 const handler = NextAuth(authOptions);
-
-// Define generateStaticParams for Next.js export optimization
-export async function generateStaticParams() {
-  return {
-    paths: [],
-    fallback: false,
-  };
-}
-
-export default handler;
+export { handler as GET, handler as POST };

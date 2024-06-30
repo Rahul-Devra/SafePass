@@ -107,7 +107,7 @@ export default function Home() {
 
       <div className="text-white container flex justify-center mx-auto pb-8 pt-8">
         <div
-          className=" w-[600px] h-[200px] md:h-auto border-4 border-blue-900 mx-5 py-1 "
+          className="w-[600px] border-4 border-blue-900 mx-5 py-1 "
           style={{
             borderImage:
               "linear-gradient(to right bottom, rgb(79, 70, 229) 0%, rgb(165, 56, 164) 50%, rgb(220, 38, 38) 100%)",

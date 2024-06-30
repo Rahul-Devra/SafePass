@@ -3,7 +3,7 @@ import PasswordPage from "@/components/PasswordPage";
 import { findUser } from "../serverActions/actions";
 import { notFound } from "next/navigation";
 
-const Username = ({ params }) => {
+const Username = async ({ params }) => {
   const checkUser = async () => {
     let u = await findUser({ username: params.username }); 
     if (!u) {
@@ -11,7 +11,7 @@ const Username = ({ params }) => {
     }
   };
 
-  checkUser(); 
+  await checkUser();
 
   return (
     <div className="relative">
@@ -30,16 +30,8 @@ const Username = ({ params }) => {
 
 export default Username;
 
-export async function generateStaticParams() {
-  
-  return {
-    paths: [],
-    fallback: false
-  };
-}
-
 export async function generateMetadata({ params }) {
   return {
-    title: "Your Password - PassOP"
+    title: "Your Password- PassOP"
   };
 }

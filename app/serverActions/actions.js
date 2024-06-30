@@ -1,5 +1,5 @@
 "use server";
-import User from '../../../../models/User';
+import User from '../models/User';
 import Password from "../models/Password";
 import connectDB from "../db/connectDB";
 

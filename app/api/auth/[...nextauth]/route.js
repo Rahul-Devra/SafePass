@@ -7,11 +7,11 @@ import connectDB from "@/app/db/connectDB";
 export const authOptions = {
   providers: [
     GithubProvider({
-      clientId: process.env.APP_GITHUB_ID,
+      clientId: process.env.NEXT_PUBLIC_APP_GITHUB_ID,
       clientSecret: process.env.APP_GITHUB_SECRET,
     }),
     GoogleProvider({
-      clientId: process.env.APP_GOOGLE_ID,
+      clientId: process.env.NEXT_PUBLIC_APP_GOOGLE_ID,
       clientSecret: process.env.APP_GOOGLE_SECRET,
     }),
   ],

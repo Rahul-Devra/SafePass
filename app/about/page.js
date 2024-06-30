@@ -17,7 +17,7 @@ const About = () => {
         <section className="mb-8">
           <p className="mb-4">
             Welcome to PassOp, a platform dedicated to offering innovative
-            solutions for password management. Whether you're an individual,
+            solutions for password management. Whether you&apos;re an individual,
             <br /> a small business owner, or part of a large organization,
             PassOp provides the tools you need to keep your accounts safe and
             secure.
@@ -108,7 +108,7 @@ const About = () => {
             Join Our Community
           </h2>
           <p>
-            PassOp is more than just a password management platform; it's a
+            PassOp is more than just a password management platform; it&apos;s a
             community that values security and privacy. Join us today and be a
             part of a movement that prioritizes the protection of digital
             identities.

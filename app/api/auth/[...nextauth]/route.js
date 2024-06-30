@@ -51,9 +51,7 @@ export const authOptions = {
       session.user.accessToken = token.accessToken;
       session.user.provider = token.provider;
 
-      console.log("Session Username:", token.username);
-      console.log("Session Information:", session);
-      console.log("Provider Information:", token.provider);
+      
       return session;
     },
   },

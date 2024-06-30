@@ -70,7 +70,6 @@ export const submitForm = async (data) => {
 
     return { status: "OK", message: "Database Created" };
   } catch (error) {
-    console.error("Error saving form data:", error);
     return { status: "ERROR", message: "Server error, please try again" };
   }
 };
@@ -98,7 +97,7 @@ export const fetchpassword = async (userName,provider) => {
 
     return decryptedPasswords;
   } catch (error) {
-    console.error("Error fetching passwords:", error);
+    
     return { status: "ERROR", message: "Server error, please try again" };
   }
 };
@@ -126,7 +125,7 @@ export const editPassword = async (data, id) => {
 
     return { status: "OK", data: updatedDocument };
   } catch (error) {
-    console.error("Error updating password:", error);
+   
     return { status: "ERROR", message: "Server error, please try again" };
   }
 };
@@ -137,7 +136,7 @@ export const deletePassword = async (id) => {
     const updatedDocument = await Password.findByIdAndDelete(id);
     return { status: "OK", data: updatedDocument };
   } catch (error) {
-    console.error("Error deleting password:", error);
+    
     return { status: "ERROR", message: "Server error, please try again" };
   }
 };

@@ -34,18 +34,16 @@ const PasswordPage = ({ userName }) => {
   };
 
   const getData = async () => {
-    try {
+    
       let dbPasswords = await fetchpassword(userName, session.user.provider);
       setPasswordArray(dbPasswords);
-    } catch (error) {
-      console.error("Error fetching passwords:", error);
-    }
+   
   };
 
   const handleSubmit = async () => {
     try {
-      console.log(session.user.provider)
-      console.log(session.user.username)
+      
+      
       const response = await submitForm({
         ...form,
         userData: userName,
@@ -67,7 +65,7 @@ const PasswordPage = ({ userName }) => {
         return false;
       }
     } catch (error) {
-      console.error("Submit form failed:", error);
+      
       return false;
     }
   };
@@ -101,7 +99,7 @@ const PasswordPage = ({ userName }) => {
         return false;
       }
     } catch (error) {
-      console.error("Error editing password:", error);
+      
       return false;
     }
   };
@@ -132,11 +130,10 @@ const PasswordPage = ({ userName }) => {
           progress: undefined,
           theme: "dark",
         });
-        console.error("Delete password failed:", response.message);
+        
         return false;
       }
     } catch (error) {
-      console.error("Error deleting password:", error);
       return false;
     }
   };

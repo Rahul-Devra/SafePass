@@ -13,12 +13,12 @@ const About = () => {
       </video>
       <div className="container mx-auto p-8">
         <h1 className="text-4xl font-bold mb-6 text-blue-500 mt-10 md:mt-0">
-          About PassOp
+          About PassOP
         </h1>
 
         <section className="mb-8">
           <p className="mb-4">
-            Welcome to PassOp, a platform dedicated to offering innovative
+            Welcome to PassOP, a platform dedicated to offering innovative
             solutions for password management. Whether you&apos;re an
             individual, a small business owner, <br /> or part of a large
             organization, PassOp provides the tools you need to keep your
@@ -29,7 +29,7 @@ const About = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-4 text-blue-400">Our Mission</h2>
           <p>
-            At PassOp, our mission is to empower users by providing a
+            At PassOP, our mission is to empower users by providing a
             user-friendly platform for managing passwords and securing their
             digital identities. We believe in the importance of security and
             privacy, and our goal is to make it easy for everyone to protect
@@ -110,7 +110,7 @@ const About = () => {
             </li>
             <li className="mb-2">
               <strong className="text-violet-700">Community Focused:</strong>
-              PassOp is built with a focus on security and privacy. We strive to
+              PassOP is built with a focus on security and privacy. We strive to
               build a community that values and upholds these principles.
             </li>
             <li className="mb-2">
@@ -126,7 +126,7 @@ const About = () => {
             Join Our Community
           </h2>
           <p>
-            PassOp is more than just a password management platform; it&apos;s a
+            PassOP is more than just a password management platform; it&apos;s a
             community that values security and privacy. Join us today and be a
             part of a movement that prioritizes the protection of digital
             identities.
@@ -151,7 +151,7 @@ const About = () => {
             for more information.
           </p>
           <p>
-            Thank you for choosing PassOp. Together, we can ensure your digital
+            Thank you for choosing PassOP. Together, we can ensure your digital
             safety and security!
           </p>
         </section>

@@ -87,12 +87,12 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link
+                    <a
                       href={`/${session.user.name}`}
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Your Passwords
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>

@@ -17,13 +17,15 @@ const PasswordPage = ({ userName }) => {
   const [form, setForm] = useState({ site: "", username: "", password: "" });
   const [passwordArray, setPasswordArray] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (!session) {
       router.push("/login");
-    } else {
-      getData();
     }
+  }, [session, router]);
+
+  useEffect(() => {
+    getData();
   }, [session, router]);
 
   const handleChange = (e) => {
@@ -31,11 +33,13 @@ const PasswordPage = ({ userName }) => {
   };
 
   const getData = async () => {
+    setLoading(true);
     if (session && session.user) {
       let dbPasswords = await fetchpassword(userName, session.user.provider);
       setPasswordArray(dbPasswords);
       setPasswordArray(dbPasswords);
     }
+    setLoading(false);
   };
 
   const handleSubmit = async () => {
@@ -46,7 +50,7 @@ const PasswordPage = ({ userName }) => {
         provider: session.user.provider,
       });
       if (response) {
-        toast("Password saved successfully!", {
+        toast("Password Saved successfully!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -268,26 +272,13 @@ const PasswordPage = ({ userName }) => {
           <div className="relative mx-auto max-w-5xl mt-20">
             <div className="rounded-lg bg-black/80 backdrop-blur">
               <div className="pb-7 overflow-x-auto">
-                {passwordArray.length <= 0 ? (
-                  <div
-                    className="rounded-xl p-1"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right bottom, rgb(79, 70, 229) 0%, rgb(165, 56, 164) 50%, rgb(220, 38, 38) 100%)",
-                    }}
-                  >
-                    <div className="flex w-full flex-wrap items-center justify-between gap-4 px-8 py-10 sm:px-16 lg:flex-nowrap">
-                      <div className="lg:max-w-xl">
-                        <h2 className="block w-full pb-2 bg-gradient-to-b from-white to-gray-400 bg-clip-text font-bold text-transparent text-3xl sm:text-4xl">
-                          No Passwords Available
-                        </h2>
-                        <p className="my-4 bg-transparent font-medium leading-relaxed tracking-wide text-gray-400">
-                          Add password to get started
-                        </p>
-                      </div>
-                    </div>
+                {loading ? (
+                  <div className="flex space-x-2 justify-center items-center bg-white p-3 dark:invert">
+                    <div className="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                    <div className="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                    <div className="h-8 w-8 bg-black rounded-full animate-bounce"></div>
                   </div>
-                ) : (
+                ) : passwordArray.length >0 ? (
                   <table className="table-auto w-full rounded-md overflow-hidden bg-gray-800 text-white">
                     <thead className="bg-violet-700 text-white">
                       <tr>
@@ -331,7 +322,26 @@ const PasswordPage = ({ userName }) => {
                       ))}
                     </tbody>
                   </table>
-                )}
+                ) : (
+                  <div
+                    className="rounded-xl p-1"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right bottom, rgb(79, 70, 229) 0%, rgb(165, 56, 164) 50%, rgb(220, 38, 38) 100%)",
+                    }}
+                  >
+                    <div className="flex w-full flex-wrap items-center justify-between gap-4 px-8 py-10 sm:px-16 lg:flex-nowrap">
+                      <div className="lg:max-w-xl">
+                        <h2 className="block w-full pb-2 bg-gradient-to-b from-white to-gray-400 bg-clip-text font-bold text-transparent text-3xl sm:text-4xl">
+                          No Passwords Available
+                        </h2>
+                        <p className="my-4 bg-transparent font-medium leading-relaxed tracking-wide text-gray-400">
+                          Add password to get started
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) }
               </div>
             </div>
           </div>

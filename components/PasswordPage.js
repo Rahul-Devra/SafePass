@@ -46,7 +46,7 @@ const PasswordPage = ({ userName }) => {
         provider: session.user.provider,
       });
       if (response) {
-        toast("Password Saved successfully!", {
+        toast("Password saved successfully!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

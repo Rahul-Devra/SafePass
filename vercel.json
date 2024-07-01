@@ -1,7 +1,8 @@
 {
-    "functions": {
-      "api/**/*": {
-        "maxDuration": 30
-      }
+  "version": 2,
+  "functions": {
+    "app/api/auth/[...nextauth]/route.js": {
+      "maxDuration": 30
     }
   }
+}

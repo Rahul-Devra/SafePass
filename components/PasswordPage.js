@@ -21,11 +21,9 @@ const PasswordPage = ({ userName }) => {
   useEffect(() => {
     if (!session) {
       router.push("/login");
+    } else {
+      getData();
     }
-  }, [session, router]);
-
-  useEffect(() => {
-    getData();
   }, [session, router]);
 
   const handleChange = (e) => {

@@ -21,11 +21,9 @@ const PasswordPage = ({ userName }) => {
   useEffect(() => {
     if (!session) {
       router.push("/login");
+    } else {
+      getData();
     }
-  }, [session, router]);
-
-  useEffect(() => {
-    getData();
   }, [session, router]);
 
   const handleChange = (e) => {
@@ -278,7 +276,7 @@ const PasswordPage = ({ userName }) => {
                     <div className="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]"></div>
                     <div className="h-8 w-8 bg-black rounded-full animate-bounce"></div>
                   </div>
-                ) : passwordArray.length >0 ? (
+                ) : passwordArray.length > 0 ? (
                   <table className="table-auto w-full rounded-md overflow-hidden bg-gray-800 text-white">
                     <thead className="bg-violet-700 text-white">
                       <tr>
@@ -341,7 +339,7 @@ const PasswordPage = ({ userName }) => {
                       </div>
                     </div>
                   </div>
-                ) }
+                )}
               </div>
             </div>
           </div>

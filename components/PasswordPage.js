@@ -11,7 +11,6 @@ import { deletePassword } from "@/app/serverActions/actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const PasswordPage = ({ userName }) => {
   const { data: session } = useSession();
   const router = useRouter();
@@ -34,16 +33,15 @@ const PasswordPage = ({ userName }) => {
   };
 
   const getData = async () => {
-    
+    if (session && session.user) {
       let dbPasswords = await fetchpassword(userName, session.user.provider);
       setPasswordArray(dbPasswords);
-   
+      setPasswordArray(dbPasswords);
+    }
   };
 
   const handleSubmit = async () => {
     try {
-      
-      
       const response = await submitForm({
         ...form,
         userData: userName,
@@ -65,7 +63,6 @@ const PasswordPage = ({ userName }) => {
         return false;
       }
     } catch (error) {
-      
       return false;
     }
   };
@@ -99,7 +96,6 @@ const PasswordPage = ({ userName }) => {
         return false;
       }
     } catch (error) {
-      
       return false;
     }
   };
@@ -130,7 +126,7 @@ const PasswordPage = ({ userName }) => {
           progress: undefined,
           theme: "dark",
         });
-        
+
         return false;
       }
     } catch (error) {
@@ -221,7 +217,6 @@ const PasswordPage = ({ userName }) => {
         <div className="container m-auto px-4 pb-28 sm:px-6 lg:px-8">
           <div>
             <h1 className="text-4xl font-bold text-center text-white">
-              
               <span className="text-green-700">&lt;</span>
               <span>Pass</span>
               <span className="text-green-700">OP/&gt;</span>

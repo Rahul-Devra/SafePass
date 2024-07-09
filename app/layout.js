@@ -8,7 +8,7 @@ import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "PassOP - Securely Manage Your Passwords!",
+  title: "SafePass - Securely Manage Your Passwords!",
   description: "Your Trusted Password Management Solution.",
   
 };

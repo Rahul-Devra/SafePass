@@ -21,7 +21,15 @@ export default function RootLayout({ children }) {
         <description>{metadata.description}</description>
         <link rel="icon" sizes="96x96" href="/icon.png" />
       </Head>
-      <body className="text-white">
+      <body className=" relative text-white">
+      <video
+        autoPlay
+        muted
+        loop
+        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+      >
+        <source src="/bg.mp4" type="video/mp4" />
+      </video>
         <SessionWrapper>
           <Navbar />
           <div className="min-h-[83.3vh] ">{children}</div>

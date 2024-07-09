@@ -14,17 +14,9 @@ const Username = async ({ params }) => {
   await checkUser();
 
   return (
-    <div className="relative">
-      <video
-        autoPlay
-        muted
-        loop
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-      >
-        <source src="/bg.mp4" type="video/mp4" />
-      </video>
+    
       <PasswordPage userName={params.username} />
-    </div>
+    
   );
 };
 

@@ -5,16 +5,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="relative">
-      <video
-        autoPlay
-        muted
-        loop
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-      >
-        <source src="/bg.mp4" type="video/mp4" />
-      </video>
-
+    <>
       <div className="flex flex-col justify-center items-center text-white h-[44vh] px-5 text-xs md:px-0 md:text-base">
         <div className="flex gap gap-2 justify-center items-center font-bold md:text-5xl pb-2 md:pb-5 text-3xl">
           <p className="text-center">
@@ -49,9 +40,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-
       <div className="bg-white h-1 opacity-10"></div>
-
       <div className="text-white container mx-auto pb-32 pt-14 px-10">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-14">
           Core Features of SafePass
@@ -102,9 +91,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="bg-white h-1 opacity-10"></div>
-
       <div className="text-white container flex justify-center mx-auto pb-8 pt-8">
         <div
           className="w-[600px] border-4 border-blue-900 mx-5 py-1 "
@@ -114,18 +101,11 @@ export default function Home() {
             borderImageSlice: 1,
           }}
         >
-          <video
-            autoPlay
-            muted
-            loop
-            controls
-            className="w-[600px] px-1"
-          >
+          <video autoPlay muted loop controls className="w-[600px] px-1">
             <source src="/Video.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
-    </div>
+    </>
   );
 }
-

@@ -218,8 +218,8 @@ const PasswordPage = ({ userName }) => {
           <div>
             <h1 className="text-4xl font-bold text-center text-white">
               <span className="text-green-700">&lt;</span>
-              <span>Pass</span>
-              <span className="text-green-700">OP/&gt;</span>
+              <span>Safe</span>
+              <span className="text-green-700">Pass/&gt;</span>
             </h1>
             <p className="text-green-300 text-lg text-center">
               Your own Password Manager

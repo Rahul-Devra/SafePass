@@ -32,6 +32,6 @@ export default Username;
 
 export async function generateMetadata({ params }) {
   return {
-    title: "Your Password- PassOP"
+    title: "Your Password- SafePass"
   };
 }

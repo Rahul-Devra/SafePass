@@ -22,8 +22,8 @@ const Navbar = () => {
         </span>
         <span className="my-3 md:my-0">
           <span className="text-green-700">&lt;</span>
-          <span>Pass</span>
-          <span className="text-green-700">OP/&gt;</span>
+          <span>Safe</span>
+          <span className="text-green-700">Pass/&gt;</span>
         </span>
       </Link>
       <ul className="flex justify-between gap-4">

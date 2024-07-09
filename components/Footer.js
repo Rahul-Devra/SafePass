@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex  -mx-4">
           <div className="w-full md:w-1/3 px-4 mb-2 md:mb-0"> 
             <h3 className="text-lg md:text-xl font-semibold mb-2">Contact Us</h3> 
-            <p className="text-sm md:text-base"> Email: passop@gmail.com</p>
+            <p className="text-sm md:text-base"> Email: SafePass@gmail.com</p>
           </div>
           <div className="w-full md:w-1/3 px-4 mb-2 md:mb-0"> 
             <h3 className="text-lg md:text-xl font-semibold mb-2">Stay Connected</h3> 
@@ -16,7 +16,7 @@ const Footer = () => {
           </div>
           <div className="w-full md:w-1/3 px-4 mb-2 md:mb-0">
             <h3 className=" text-lg md:text-xl font-semibold mb-2">Legal</h3>
-            <p className="text-sm md:text-base">&copy; {new Date().getFullYear()} Passop. All rights reserved.</p>
+            <p className="text-sm md:text-base">&copy; {new Date().getFullYear()} SafePass. All rights reserved.</p>
           </div>
         </div>
       </div>

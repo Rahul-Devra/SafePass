@@ -9,7 +9,7 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    document.title = "Login - PassOP";
+    document.title = "Login - SafePass";
     if (session) {
       router.push(`/${session.user.username}`);
     }
@@ -37,7 +37,7 @@ const Page = () => {
                 alt="tailus logo"
               />
               <h2 className="mb-8 text-2xl text-center text-white font-bold">
-                Sign in to unlock the best of PassOP.
+                Sign in to unlock the best of SafePass.
               </h2>
             </div>
             <div className="mt-16 grid gap-4">

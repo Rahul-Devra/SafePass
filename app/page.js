@@ -19,8 +19,8 @@ export default function Home() {
         <div className="flex gap gap-2 justify-center items-center font-bold md:text-5xl pb-2 md:pb-5 text-3xl">
           <p className="text-center">
             <span className="text-green-700">&lt;</span>
-            <span>Pass</span>
-            <span className="text-green-700">OP/&gt;</span>
+            <span>Safe</span>
+            <span className="text-green-700">Pass/&gt;</span>
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export default function Home() {
 
       <div className="text-white container mx-auto pb-32 pt-14 px-10">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-14">
-          Core Features of PassOp
+          Core Features of SafePass
         </h2>
         <div className="flex gap-5 justify-around">
           <div className="item space-y-3 flex flex-col justify-center items-center">

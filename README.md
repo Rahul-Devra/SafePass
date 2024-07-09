@@ -4,11 +4,11 @@ SafePass is a responsive password manager using Next.js, TailwindCSS, and AES-25
 
 ## Features
 
-- **Secure Storage:** Safely store passwords with AES-256-CBC encryption.
 - **User Authentication:** Secure user authentication using NextAuth.js.
 - **Intuitive Interface:** Clean and user-friendly UI built with TailwindCSS.
 - **Responsive Design:** Ensures a seamless experience across devices.
 - **Database:** MongoDB for persistent data storage.
+- - **Secure Storage:** Safely store passwords with AES-256-CBC encryption.
 
 ## Tech Stack
 

@@ -32,7 +32,7 @@ const Page = () => {
           </div>
           <div className="mt-16 grid gap-4">
             <button
-              className="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
+              className="group h-12 px-6c border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
               onClick={() => signIn("google")}
             >
               <div className="flex items-center space-x-4 justify-center">

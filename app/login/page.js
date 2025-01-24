@@ -20,12 +20,7 @@ const Page = () => {
       <div className="m-auto md:w-8/12 lg:w-6/12 xl:w-6/12">
         <div className="rounded-xl bg-slate-950 shadow-xl p-6 sm:p-16">
           <div className="space-y-4">
-            <Image
-              src="https://tailus.io/sources/blocks/social/preview/images/icon.svg"
-              width={40}
-              height={40}
-              alt="tailus logo"
-            />
+           
             <h2 className="mb-8 text-2xl text-center text-white font-bold">
               Sign in to unlock the best of SafePass.
             </h2>
@@ -37,10 +32,10 @@ const Page = () => {
             >
               <div className="flex items-center space-x-4 justify-center">
                 <Image
-                  src="https://tailus.io/sources/blocks/social/preview/images/google.svg"
                   width={20}
                   height={20}
-                  alt="google logo"
+                  src="https://img.icons8.com/color/48/google-logo.png"
+                  alt="google-logo"
                 />
                 <span className="block font-semibold text-white text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">
                   Continue with Google
